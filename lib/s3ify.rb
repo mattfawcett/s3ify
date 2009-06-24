@@ -19,10 +19,11 @@ module S3ify
         doc = Nokogiri::HTML(open(path + "/" + entry))
         doc.css('img').each do |image| 
           unless image['src'] =~ /^http/
-            image.set_attribute 'src', "http://#{bucket}.s3.amazonaws.com/#{s3_folder}#{image['src'] =~ /$\// ? image['src'] : '/' + image['src']}"            
+            image.set_attribute 'src', "http://#{bucket}.s3.amazonaws.com/#{s3_folder}#{new_image_path(image['src'])}"            
           end
         end
         output.puts doc
+        output.close
       end
     end
     copy_file_or_directory_to_s3(path, bucket, s3_folder)
@@ -45,8 +46,17 @@ module S3ify
     AWS::S3::S3Object.store(s3_folder + file_name.gsub(@base_path, ''), open(file_name), bucket, :access => :public_read)    
   end
   
+  def self.new_image_path(old_path)
+    if old_path =~ /^\.\//
+      return old_path.gsub(/^\.\//, '/')
+    elsif !old_path.match(/^\//)
+      return "/" + old_path
+    end
+    return old_path
+  end
+  
   
 end
-
-
-S3ify.s3ify_folder("/Users/mattfawcett/Desktop/zizzi-emails", 'mattstest', 'email4')
+# 
+# 
+# S3ify.s3ify_folder("/Users/mattfawcett/Desktop/zizzi-emails", 'mattstest', 'email4')
