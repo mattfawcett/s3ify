@@ -1,0 +1,7 @@
+= s3ify
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 mattfawcett. See LICENSE for details.
