@@ -30,8 +30,6 @@ module S3ify
   end  
   
   def self.copy_file_or_directory_to_s3(file_name, bucket, s3_folder)
-    return if file_name =~ /^\./
-        
     fstat = File.stat(file_name)    
     copy_file_to_s3(file_name, bucket, s3_folder) if fstat.file? || fstat.symlink?
 
@@ -42,7 +40,7 @@ module S3ify
     end
   end
   
-  def self.copy_file_to_s3(file_name, bucket, s3_folder)
+  def self.copy_file_to_s3(file_name, bucket, s3_folder)    
     AWS::S3::S3Object.store(s3_folder + file_name.gsub(@base_path, ''), open(file_name), bucket, :access => :public_read)    
   end
   
@@ -57,6 +55,3 @@ module S3ify
   
   
 end
-# 
-# 
-# S3ify.s3ify_folder("/Users/mattfawcett/Desktop/zizzi-emails", 'mattstest', 'email4')
