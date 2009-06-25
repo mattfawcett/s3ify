@@ -1,6 +1,19 @@
 = s3ify
 
-Description goes here.
+A command line tool to convert a html email to change its relative image paths to point at absolute paths on Amazon S3. A new
+copy of each html file will be created with the prefix of 's3_'. It will then upload the folder to a folder / bucket on S3 and 
+display the URL's of the html files.
+
+The library relies on you having the AMAZON_ACCESS_KEY_ID and AMAZON_SECRET_ACCESS_KEY environment variables set.
+
+== How to use
+s3ify -b my_bucket -p my_folder_in_bucket ~/Desktop/zizzi-emails/
+
+Use -b to speify your bucket name
+Use -p to specify the path you want inside the bucket (you can leave this out and it will use the unix timestamp)
+Finally give the path to the foldr that you want to 's3ify'
+
+
 
 == Copyright
 
