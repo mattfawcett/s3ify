@@ -5,12 +5,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../lib/s3ify')
 
 program :name, 'S3ify'
 program :version, '1.0.0'
-program :description, 'Take a folder containing a html file(s) and some images and convert the relative image paths to point at absolute paths on S3 and upload the folder to S3'
+program :description, 'Take a folder containing a html email file(s) and some images and convert the relative image paths to point at absolute paths on S3 and upload the folder to S3'
 
 
 command '' do |c|
   c.syntax = "s3ify -b mybycketname -p mypathinmybucket /home/Desktop/PromoEmail/"
-  c.description = "Display bar with optional prefix"
+  c.description = "Take a folder containing a html email file(s) and some images and convert the relative image paths to point at absolute paths on S3 and upload the folder to S3"
   c.option "--bucket STRING"
   c.option "--path STRING"
   c.when_called do |args, options|
