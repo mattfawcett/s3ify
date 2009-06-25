@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{s3ify}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["mattfawcett"]
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/s3ify",
      "lib/s3ify.rb",
+     "s3ify.gemspec",
      "spec/fixtures/expected/index.html",
      "spec/fixtures/original/images/image1.jpg",
      "spec/fixtures/original/images/image2.jpg",
@@ -38,15 +39,11 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
-  s.summary = %q{Upload HTML emails to S3}
+  s.summary = %q{Upload HTML emaisl to S3}
   s.test_files = [
     "spec/s3ify_spec.rb",
      "spec/spec_helper.rb"
   ]
-  s.add_dependency 'visionmedia-commander'
-  s.add_dependency 'nokogiri'
-  s.add_dependency 'aws-s3'
-  
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
