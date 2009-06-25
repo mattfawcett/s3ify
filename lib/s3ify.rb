@@ -11,11 +11,12 @@ module S3ify
   )
       
   def self.s3ify_folder(path, bucket, s3_folder)
+    s3_folder = Time.now.to_i.to_s if s3_folder.nil?
+    final_html_paths = []
     @base_path = path
     Dir.entries( path ).each do |entry|      
       if entry =~ /html/ && !entry.match(/^s3\_/)
         output = File.new("#{path}/s3_#{entry}", "w")
-        puts path + entry
         doc = Nokogiri::HTML(open(path + "/" + entry))
         doc.css('img').each do |image| 
           unless image['src'] =~ /^http/
@@ -24,9 +25,11 @@ module S3ify
         end
         output.puts doc
         output.close
+        final_html_paths << "http://#{bucket}.s3.amazonaws.com/#{s3_folder}/#{entry}"
       end
     end
     copy_file_or_directory_to_s3(path, bucket, s3_folder)
+    return final_html_paths
   end  
   
   def self.copy_file_or_directory_to_s3(file_name, bucket, s3_folder)

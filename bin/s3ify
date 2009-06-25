@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby 
+require 'rubygems'
+require 'commander'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/s3ify')
+
+program :name, 'S3ify'
+program :version, '1.0.0'
+program :description, 'Take a folder containing a html file(s) and some images and convert the relative image paths to point at absolute paths on S3 and upload the folder to S3'
+
+
+command '' do |c|
+  c.syntax = "s3ify -b mybycketname -p mypathinmybucket /home/Desktop/PromoEmail/"
+  c.description = "Display bar with optional prefix"
+  c.option "--bucket STRING"
+  c.option "--path STRING"
+  c.when_called do |args, options|
+    uploaded_html_files = S3ify.s3ify_folder(args.first, options.bucket, options.path) 
+    uploaded_html_files.each {|file_name| say file_name}
+  end
+end
