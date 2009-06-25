@@ -5,11 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "s3ify"
-    gem.summary = %Q{Upload HTML emaisl to S3}
+    gem.summary = %Q{Upload HTML emails to S3}
     gem.email = "matt@bolseragency.com"
     gem.homepage = "http://github.com/mattfawcett/s3ify"
     gem.authors = ["mattfawcett"]
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency('visionmedia-commander', '=3.2.9')
+    gem.add_dependency('nokogiri')
+    gem.add_dependency('nokogiri')
+    gem.add_dependency('aws-s3')
   end
 
 rescue LoadError

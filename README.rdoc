@@ -11,7 +11,7 @@ s3ify -b my_bucket -p my_folder_in_bucket ~/Desktop/zizzi-emails/
 
 Use -b to speify your bucket name
 Use -p to specify the path you want inside the bucket (you can leave this out and it will use the unix timestamp)
-Finally give the path to the foldr that you want to 's3ify'
+Finally give the path to the folder that you want to 's3ify'
 
 
 
