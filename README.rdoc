@@ -13,7 +13,9 @@ Use -b to specify your bucket name
 Use -p to specify the path you want inside the bucket (you can leave this out and it will use the unix timestamp)
 Finally give the path to the folder that you want to 's3ify'
 
-
+== Todo
+Support buckets in Europe
+Handle stylesheets so its not just limited to emails
 
 == Copyright
 
