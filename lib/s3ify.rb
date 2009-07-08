@@ -25,7 +25,7 @@ module S3ify
         end
         output.puts doc
         output.close
-        final_html_paths << "http://#{bucket}.s3.amazonaws.com/#{s3_folder}/#{entry}"
+        final_html_paths << "http://#{bucket}.s3.amazonaws.com/#{s3_folder}/s3_#{entry}"
       end
     end
     copy_file_or_directory_to_s3(path, bucket, s3_folder)
